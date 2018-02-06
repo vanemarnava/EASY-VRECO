@@ -5,3 +5,15 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+/*estilo del mapa*/
+#map{
+	height: 20em;
+	width: 90%;
+	margin: 2em;
+}
+
+/*Estilos botones*/
+#botons{
+	margin: 2em;
+}

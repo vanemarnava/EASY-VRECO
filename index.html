@@ -9,7 +9,42 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
-	
+	<!-- seccion titulo -->
+	<section class="titleSection">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="title">EASY-VRECO</h1>
+				</div> <!-- fin col -->
+			</div><!-- fin row -->
+	</section>
+
+	<!-- seccion de botones -->
+	<section id="botons">
+		<div class="row">
+
+			<div class="col-sm-12 col-md-3">
+				<button onclick="findMe()"">Encuentrame!!</button>
+			</div> <!-- fin col -->
+			<div class="col-sm-12 col-md-3">
+				<label>Origen:</label><input id="pto-partida" type="radio" name="type">
+			</div> <!-- fin col -->
+			<div class="col-sm-12 col-md-3">
+				<label>Destino:</label><input id="pto-llegada" type="text">
+			</div> <!-- fin col -->
+			<div class="col-sm-12 col-md-3">
+				<button>Ruta</button>
+			</div> <!-- fin col -->
+
+		</div><!-- fin row -->
+	</section>
+	<!-- seccion del mapa -->
+	<section class="mapaSection">
+		<div class="row">
+				<div class="col-md-12">
+					<div id="map"><!--aqui ira el mapa!!--></div>
+				</div> <!-- fin col -->
+		</div><!-- fin row -->
+	</section>
 
 
 	<!-- scripts -->
@@ -19,5 +54,13 @@
 	<script src="assets/js/jquery-3.2.1.min.js"></script>
 	<!-- enlace bootstap -->
 	<script src="assets/js/bootstrap.min.js"></script>
+	<!-- script para mapa -->
+	 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmzCLrTGJMgn8WRBnwkvVt0w-gWr-jCmA">
+    </script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxWWvT1dkARvZiZKLQoQEP0BjBJuoSXr8libraries=places"></script>
+
 </body>
 </html>
+
+<!-- YOUR API KEY =  AIzaSyATHJ4FoqiNDbLoQY_ygpSzNgeMWT63EoI -->
+<!-- AIzaSyAmzCLrTGJMgn8WRBnwkvVt0w-gWr-jCmA -->
