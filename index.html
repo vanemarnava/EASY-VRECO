@@ -9,10 +9,12 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
+	<div id="map"></div>
+	<div class="searcher">
+		<h4>Encuéntrame</h4>
+	</div>
 	<button onclick="myUbicacion()">Mi Ubicación</button>
-<p id="ubicacion"></p>
-
-
+	<p id="ubicacion"></p>
 	<!-- scripts -->
 	<!-- enlace app javascript -->
 	<script src="assets/js/app.js"></script>
@@ -20,5 +22,8 @@
 	<script src="assets/js/jquery-3.2.1.min.js"></script>
 	<!-- enlace bootstap -->
 	<script src="assets/js/bootstrap.min.js"></script>
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5WT5gGrzXG9SXG8TpD7GzZPwtIoPea9E&callback=initMap">
+    </script>
 </body>
 </html>
