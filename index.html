@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>EASY-VRECO</title>
 	<!-- enlace estilos de css -->
 	<link rel="stylesheet" href="assets/css/styles.css">
@@ -26,13 +27,13 @@
 				<button onclick="findMe()"">Encuentrame!!</button>
 			</div> <!-- fin col -->
 			<div class="col-sm-12 col-md-3">
-				<label>Origen:</label><input id="pto-partida" type="radio" name="type">
+				<label>Origen:</label><input id="pto-partida" type="text" name="type">
 			</div> <!-- fin col -->
 			<div class="col-sm-12 col-md-3">
 				<label>Destino:</label><input id="pto-llegada" type="text">
 			</div> <!-- fin col -->
 			<div class="col-sm-12 col-md-3">
-				<button>Ruta</button>
+				<button>Trazar ruta</button>
 			</div> <!-- fin col -->
 
 		</div><!-- fin row -->
@@ -55,10 +56,9 @@
 	<!-- enlace bootstap -->
 	<script src="assets/js/bootstrap.min.js"></script>
 	<!-- script para mapa -->
-	 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmzCLrTGJMgn8WRBnwkvVt0w-gWr-jCmA">
-    </script> -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxWWvT1dkARvZiZKLQoQEP0BjBJuoSXr8libraries=places"></script>
-
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxWWvT1dkARvZiZKLQoQEP0BjBJuoSXr8libraries=places"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmzCLrTGJMgn8WRBnwkvVt0w-gWr-jCmA">
+  </script> -->
 </body>
 </html>
 
