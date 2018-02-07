@@ -1,3 +1,4 @@
+
 function initMap() {
 	let inputPartida = document.getElementById('inputPartida');
 	let inputDestino = document.getElementById('inputDestino');
