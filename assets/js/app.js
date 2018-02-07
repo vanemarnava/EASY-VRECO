@@ -1,41 +1,11 @@
-//detectar localizacion
-// let x = document.getElementById("ubicacion");
-// function myUbicacion() {
-//         navigator.geolocation.getCurrentPosition(showPosition);
-// }
-// function showPosition(position) {
-//     x.innerHTML = "Latitud: " + position.coords.latitude + 
-//                   "<br>Longitud: " + position.coords.longitude;
-// }
-// let x = document.getElementById("ubicacion");
-// function myUbicacion() {
-//   if(navigator.geolocation){
-//         navigator.geolocation.getCurrentPosition(showPosition);
-// 	}
-// }
-// //mapa
-// function initMap() {
-	
-// 	var latitud,longitud;
-// 	function showPosition(position) {
-//     latitud = position.coords.latitude;
-//     longitud = position.coords.longitude;
-// 	}
-//         var laboratoria = {lat: -33.4190451, lng: -70.6439039};
-//         var map = new google.maps.Map(document.getElementById('map'), {
-//           zoom: 16,
-//           center: laboratoria
-//         });
-//         // var marker = new google.maps.Marker({
-//         //   position: {lat:latitud, lng:longitud},
-//         //   map: map
-//         // });
-//       }
-
 function initMap() {
+	let inputPartida = document.getElementById('inputPartida');
+	let inputDestino = document.getElementById('inputDestino');
+	new google.maps.places.Autocomplete(inputPartida);
+	new google.maps.places.Autocomplete(inputDestino);
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.4363526, lng: -70.6323715},
-          zoom: 12
+          zoom: 14
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -68,3 +38,4 @@ function initMap() {
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
       }
+

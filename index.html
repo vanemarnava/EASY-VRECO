@@ -9,12 +9,13 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
-	<div id="map"></div>
-	<div onclick="myUbicacion()" class="searcher">
-		<h4>Encuéntrame</h4>
+	<div class="searcher">
+		<input type="text" id="inputPartida" placeholder="Punto de partida">
+		<input type="text" id="inputDestino" placeholder="Ingresa tu destino">
+		<button>Encuéntrame</button>
 	</div>
-	<button >Mi Ubicación</button>
-	<p id="ubicacion"></p>
+	<div id="map"></div>
+	
 	<!-- scripts -->
 	<!-- enlace app javascript -->
 	<script src="assets/js/app.js"></script>
@@ -23,7 +24,7 @@
 	<!-- enlace bootstap -->
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5WT5gGrzXG9SXG8TpD7GzZPwtIoPea9E&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5WT5gGrzXG9SXG8TpD7GzZPwtIoPea9E&callback=initMap&libraries=places">
     </script>
 </body>
 </html>
