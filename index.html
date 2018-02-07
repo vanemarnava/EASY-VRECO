@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>EASY-VRECO</title>
 	<!-- enlace estilos de css -->
 	<link rel="stylesheet" href="assets/css/styles.css">
@@ -9,14 +10,28 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
+  <!-- seccion titulo -->
+	<section class="titleSection">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="title">EASY-VRECO</h1>
+				</div> <!-- fin col -->
+			</div><!-- fin row -->
+	</section>
+  
+ <section>           
 	<div class="searcher">
 		<button id="btnFind">Encuéntrame</button>
 		<input type="text" id="inputPartida" placeholder="Punto de partida">
 		<input type="text" id="inputDestino" placeholder="Ingresa tu destino">
 		<button id="route">Trazar ruta</button>
 	</div>
+ </section>
+  
+ <section>  
 	<div id="map"></div>
-	
+ </section>
+
 	<!-- scripts -->
 	<!-- enlace app javascript -->
 	<script src="assets/js/app.js"></script>
