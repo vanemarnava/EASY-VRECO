@@ -7,19 +7,21 @@
 }
 
 /*estilo del mapa*/
-#map{
-	height: 20em;
-	width: 90%;
-	margin: 2em;
-	text-align: center;
+#map {
+	height: 90vh;
+  width: 100%;
 }
+
+.searcher {
+	background-color: #FFA013;
+	padding: 20px;
 
 /*Estilos seccion botons*/
 #botons{
 	margin: 1em;
 }
-
-/*estilos de los botones e inputs*/
+  
+/*Estilos de los botones e inputs*/
 .btn{
 	margin: 0.5em;
 	text-align: center;

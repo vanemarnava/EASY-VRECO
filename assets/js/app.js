@@ -1,100 +1,70 @@
-// funcion para iniciar mapa
-//se llama en el src del script
+
 function initMap() {
-
-	
-  var laboratoriaChile = {lat: -33.41884700000001, lng: -70.6423528};
-  var map = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 17, // acercamiento con el que se vera el mapa
-	  //center indica el centro del mapa, laboratoriaChile indica ubicacion en que se centrara el mapa
-    center: laboratoriaChile
-
-  });
-
-  //anadir marcado
-  var markerLaboratoria = new google.maps.Marker({
-    position: laboratoriaChile,//indica el lugar donde se pondra el marcador, recibiendo la latitud y longitud
-    map: map //se indica el mapa en el que aparecera el marcado
-  });
-
-  // con este se muestra por el html cuales son la longitud y latitud de donde nos encontramos
-		// output.innerHTML = '<p>Latitud: ' + latitude + '<br> Longitud: ' + longitude + '</p>';
-
-  //funcion buscar
-  function buscar(){
-    if(navigator.geolocation){ 
-      navigator.geolocation.getCurrentPosition(funcionExito, funcionError);
-    }
-  }
-
-  document.getElementById("encontrar").addEventListener("click", buscar);
-  
-  var latitud, longitud;
-
-  var funcionExito = function(posicion){ 
-    latitud = posicion.coords.latitude;
-    longitud = posicion.coords.longitude;
-
-  //creando el marcador de la ubicacion
-  var miUbicacion = new google.maps.Marker({
-    position: {lat:latitud, lng:longitud},
-    animation: google.maps.Animation.DROP, //animacion con que aparecera el marcador de ubicacion
-    map: map
-  });
-
-  //dando ultimos detalles se se veran en la ubicacion
-  map.setZoom(17); //acercar el mapa
-  map.setCenter({lat:latitud, lng:longitud}); //asigna un nuevo centro del mapa
-
-  //funcion que muestra una alerta al no encontrar la ubicacion
-  var funcionError = function(error){
-    alert("tenemos un problema con encontrar tu ubicación");
-  }
-
-  //-----------------------------------------------------//
-
-  // autocompletar el input
-	// llamar a los inputs que se quieren autocompletar 
-	var inputPartida = document.getElementById('pto-partida');
-	var inputLlegada = document.getElementById('pto-llegada');
-
-	// //con la clase autocomplete se indica que este input va a tener esta funcionalidad
+	let inputPartida = document.getElementById('inputPartida');
+	let inputDestino = document.getElementById('inputDestino');
 	new google.maps.places.Autocomplete(inputPartida);
-	new google.maps.places.Autocomplete(inputLlegada);
+	new google.maps.places.Autocomplete(inputDestino);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.4363526, lng: -70.6323715},
+          zoom: 14
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        let btnFind = document.getElementById('btnFind');
+        btnFind.addEventListener('click', findMe);
+        function findMe(){
+        	
+        	 // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            inputPartida.value = pos.lat + ',' + pos.lng;
+            var iconBase = 'http://i67.tinypic.com/';
+            var marker = new google.maps.Marker({
+	          position: pos,
+	          map: map,
+	          icon: iconBase + '2vlnz0l.png'
+	        });
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        }
 
-	// var autocomplete = new google.maps.places.Autocomplete(input);
-	// autocomplete.bindTo('bounds', map); 
+        let route = document.getElementById('route');
+        let directionService = new google.maps.DirectionsService;
+        let directionDisplay = new google.maps.DirectionsRenderer;
+        let calculateRoute = function(directionService, directionDisplay) {
+        	directionService.route({
+        		origin: inputPartida.value,
+        		destination: inputDestino.value,
+        		travelMode: 'WALKING'
+        	}, function(response, status) {
+        			if (status === 'OK') {
+        				directionDisplay.setDirections(response);
+        			} else {
+        					window.alert("No encontramos ruta");
+        			}
+        	})
+        }
+        directionDisplay.setMap(map);
+        let trazar = function() {
+        	calculateRoute(directionService, directionDisplay);
+        }
+        route.addEventListener('click', trazar);
+       
+      }
 
-	//se declaran las variables para trazar la ruta
-	// trazar ruta
-	var direstionsService = new google.maps.DirectionsService;
-	var directionsDisplay = new google.maps.DirectionsRenderer;
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: No se pudo acceder a tu ubicación' :
+                              'Error: Tu navegador no soporta geolocalización');
+      }
 
-	// funcion para trazar ruta
-	var calculateAndDisplayRoute = function(direstionService, directionDisplay){
-		//devolvera un directionsRequest, el cual sera un objeto literal
-		direstionsService.route({
-			origin: inputPartida.value,
-			destination: inputLlegada.value,
-			travelMode: 'DRIVING'
-		}, function(response, status){
-			if (status === 'OK'){
-				// en caso de que el status sea ok se gtrazara la ruta
-				//obteniendo los datos del objeto 'response'
-				directionsDisplay.setDirections(response);
-			} else {
-				window.alert('No encontramos ruta.');
-			}
-		});
-	}
-
-	directionsDisplay.setMap(map);
-	var trazarRuta = function(){
-		calculateAndDisplayRoute(direstionsService, directionsDisplay);
-	};
-
-	document.getElementById('trazar-ruta').addEventListener('click', trazarRuta);
-
-}
-
-}
