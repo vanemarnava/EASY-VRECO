@@ -11,6 +11,7 @@ function initMap() {
         let btnFind = document.getElementById('btnFind');
         btnFind.addEventListener('click', findMe);
         function findMe(){
+        	
         	 // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -18,6 +19,7 @@ function initMap() {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            inputPartida.value = pos.lat + ',' + pos.lng;
             var iconBase = 'http://i67.tinypic.com/';
             var marker = new google.maps.Marker({
 	          position: pos,
@@ -41,7 +43,7 @@ function initMap() {
         	directionService.route({
         		origin: inputPartida.value,
         		destination: inputDestino.value,
-        		travelMode: 'DRIVING'
+        		travelMode: 'WALKING'
         	}, function(response, status) {
         			if (status === 'OK') {
         				directionDisplay.setDirections(response);
