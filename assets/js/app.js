@@ -10,8 +10,6 @@ function initMap() {
         var infoWindow = new google.maps.InfoWindow({map: map});
         let btnFind = document.getElementById('btnFind');
         btnFind.addEventListener('click', findMe);
-        let route = document.getElementById('route');
-
         function findMe(){
         	 // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -36,6 +34,27 @@ function initMap() {
         }
         }
 
+        let route = document.getElementById('route');
+        let directionService = new google.maps.DirectionsService;
+        let directionDisplay = new google.maps.DirectionsRenderer;
+        let calculateRoute = function(directionService, directionDisplay) {
+        	directionService.route({
+        		origin: inputPartida.value,
+        		destination: inputDestino.value,
+        		travelMode: 'DRIVING'
+        	}, function(response, status) {
+        			if (status === 'OK') {
+        				directionDisplay.setDirections(response);
+        			} else {
+        					window.alert("No encontramos ruta");
+        			}
+        	})
+        }
+        directionDisplay.setMap(map);
+        let trazar = function() {
+        	calculateRoute(directionService, directionDisplay);
+        }
+        route.addEventListener('click', trazar);
        
       }
 
