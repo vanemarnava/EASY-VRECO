@@ -15,8 +15,14 @@
 .searcher {
 	background-color: #FFA013;
 	padding: 20px;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 
 /*Estilos seccion botons*/
+}
+
 #botons{
 	margin: 1em;
 }
@@ -25,4 +31,34 @@
 .btn{
 	margin: 0.5em;
 	text-align: center;
+}
+
+button {
+	border: 1px solid white;
+	width: 20%;
+	padding: 5px;
+	background: transparent;
+	outline: none;
+}
+
+button:hover {
+	color: #FFA013;
+	transition: background .5s;
+	background: white;
+}
+
+input {
+	background-color: rgba(0,0,0,0);
+	width: 20%;
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,.5);
+	outline: none;
+}
+
+input::placeholder {
+	color: white;
+}
+
+input:focus {
+	border-bottom: 1px solid white;
 }
